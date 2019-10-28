@@ -41,17 +41,15 @@ router.get('/api/article/detail', function (req, res) {
 var tag_list = require('./data/tags.js')
 
 router.get('/api/tags/all', function (req, res) {
-    if (err) {
-        return backWebError(err, res)
-    }else {
+
         return res.json({
             data: tag_list
         })
-    }
+
 
 })
 
-// 后台接口
+// 后台获取全部数据接口
 router.get('/api/allArticles',function (req,res) {
     Articlelist.find({}, function (err, data) {
         if (err) {
@@ -77,18 +75,13 @@ router.post('/api/article/upload',function (req,res) {
         }
     })
 
-    tag_list.push({
-        id:tagId,
-        name:tagName
-    })
-
     var article = {
         title: req.body.title,
         abstract: req.body.abstract,
         tagId:tagId,
         content: req.body.content
     }
-    res.redirect('/')
+
     new Articlelist(article).save(function (err) {
         if(err){
             return backWebError(err,res)
@@ -97,11 +90,21 @@ router.post('/api/article/upload',function (req,res) {
             res.redirect('/')
         }
     })
-
 })
 
+//后台编辑数据接口
+router.post('/api/article/edit',function (req,res) {
+    // console.log(req.body)
+    Articlelist.findByIdAndUpdate(req.body._id,req.body,function (err) {
+        if(err){
+            return backWebError(err,res)
+        } else {
+            console.log('编辑成功')
+            res.redirect('/')
+        }
+    })
 
-
+})
 
 function backWebError(err, res) {
     console.log(res + "..." + err)
