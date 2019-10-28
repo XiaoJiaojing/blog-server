@@ -74,8 +74,6 @@ router.post('/api/article/upload',function (req,res) {
    tag_list.some(item=>{
         if(item.name === tagName){
             tagId = item.id
-        }else {
-            tagId = 'tag'+ (tag_list.length+1)
         }
     })
 

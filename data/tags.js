@@ -21,6 +21,14 @@ var tag_list = [
     },
     {
         id: 'tag6',
+        name: "HTML"
+    },
+    {
+        id: 'tag7',
+        name: "CSS"
+    },
+    {
+        id: 'tag8',
         name: '其他'
     }
 ]
