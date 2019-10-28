@@ -2,9 +2,8 @@ var result = [
     {
         title: 'JavaScript 实现数据结构',
         abstract: '>本文主要是用 JavaScript 实现计算机中的常见数据结构',
-        tag: '数据结构',
-        page: 1,
-        file: '## JavaScript 实现数据结构\n' +
+        tagId: 'tag1',
+        content: '## JavaScript 实现数据结构\n' +
             '\n' +
             '> 本文主要是用 JavaScript 实现计算机中的常见数据结构\n' +
             '\n' +
@@ -1100,9 +1099,8 @@ var result = [
     {
         title: 'JavaScript 实现几种排序算法',
         abstract: '>本篇主要是对几种较为常见的排序算法的总结',
-        tag: '算法',
-        page: 1,
-        file: '## JavaScript 实现几种排序算法\n' +
+        tagId: 'tag2',
+        content: '## JavaScript 实现几种排序算法\n' +
             '\n' +
             '> 本篇主要是对几种较为常见的排序算法的总结\n' +
             '\n' +
@@ -1247,9 +1245,8 @@ var result = [
     {
         title: '作用域和作用域链',
         abstract: '>作用域：变量可以起作用的范围',
-        tag: 'JavaScript',
-        page: 1,
-        file: '## 作用域和作用域链\n' +
+        tagId: 'tag3',
+        content: '## 作用域和作用域链\n' +
             '\n' +
             '> 作用域：变量可以起作用的范围\n' +
             '\n' +
@@ -1416,9 +1413,9 @@ var result = [
         abstract: '> 事件：触发-响应机制\n' +
             '\n' +
             '> Event接口表示在DOM中发生的任何事件，一些是用户生成的（例如鼠标或键盘事件），而其他由API生成。',
-        tag: 'JavaScript',
-        page: 1,
-        file: '## JavaScirpt中的事件机制\n' +
+        tagId: 'tag3',
+
+        content: '## JavaScirpt中的事件机制\n' +
             '\n' +
             '> 事件：触发-响应机制\n' +
             '\n' +
@@ -1519,9 +1516,8 @@ var result = [
             '>值类型：简单数据类型，基本数据类型，在存储时，变量中存储的是值本身，因此叫做值类型。\n' +
             '>\n' +
             '>引用类型：复杂数据类型，在存储是，变量中存储的仅仅是地址（引用），因此叫做引用数据类型。',
-        tag: 'JavaScript',
-        page: 2,
-        file: '### 简单类型和复杂类型的区别\n' +
+        tagId: 'tag3',
+        content: '### 简单类型和复杂类型的区别\n' +
             '\n' +
             '> 简单类型又叫做值类型，复杂类型又叫做引用类型\n' +
             '>\n' +
@@ -1575,9 +1571,8 @@ var result = [
     {
         title: '原型和原型链',
         abstract: '>本篇主要是学习原型、原型链以及构造函数三者之间的关系',
-        tag: 'JavaScript',
-        page: 2,
-        file: '## 原型和原型链\n' +
+        tagId: 'tag3',
+        content: '## 原型和原型链\n' +
             '\n' +
             '> 本篇主要是学习原型、原型链以及构造函数三者之间的关系\n' +
             '\n' +
@@ -1908,9 +1903,8 @@ var result = [
     {
         title: 'webpack安装使用方法及注意问题',
         abstract: '>这篇主要是关于webpack 的安装和使用',
-        tag: 'webpack',
-        page: 2,
-        file: '## webpack安装使用方法及注意问题\n' +
+        tagId: 'tag4',
+        content: '## webpack安装使用方法及注意问题\n' +
             '\n' +
             '> 这篇主要是关于webpack 的安装和使用的\n' +
             '\n' +
@@ -2183,13 +2177,4 @@ var result = [
     }
 ]
 
-var tags = [
-    {
-        id: "tag1",
-        content: "数据结构"
-    },
-    {
-        id: "tag2",
-        content: "js"
-    }
-]
+module.exports = result

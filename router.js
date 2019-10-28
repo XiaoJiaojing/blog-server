@@ -4,24 +4,31 @@ const fs = require('fs')
 
 const router = express.Router()
 
-const Document = require('./model/document')
+const Articlelist = require('./model/articallist')
 
 
 router.get('/api/articles', function (req, res) {
-    Document.find(req.query, function (err, data) {
+    var tagId = req.query.tagId
+    var limit = req.query.pageSize||10; //分页参数
+    var currentPage = req.query.page||1; //当前页码
+
+    Articlelist.find(tagId?{tagId:tagId}:{}).limit(parseInt(limit)).skip(parseInt(limit)*(parseInt(currentPage)-1)).exec(function (err,data) {
         if (err) {
             return backWebError(err, res)
         } else {
+            var totalLength = Articlelist.find()
             return res.json({
-                more: true,
-                data: data
+                data: data,
+                more: data.length<4?false:true
+
             })
         }
     })
+
 })
 
 router.get('/api/article/detail', function (req, res) {
-    Document.find(req.query, function (err, data) {
+    Articlelist.find(req.query, function (err, data) {
         if (err) {
             return backWebError(err, res)
         } else {
@@ -41,7 +48,7 @@ router.get('/api/tags/all', function (req, res) {
 })
 
 router.post('/api/article/upload', function (req, res) {
-    Document.find({}, function (err, data) {
+    Articlelist.find({}, function (err, data) {
         if (err) {
             return backWebError(err, res)
         } else {
@@ -60,7 +67,7 @@ router.post('/api/article/upload', function (req, res) {
 })
 
 router.get('/api/tag/classify', function (req, res) {
-    Document.find(req.query, function (err, data) {
+    Articlelist.find(req.query, function (err, data) {
         if (err) {
             return backWebError(err, res)
         } else {

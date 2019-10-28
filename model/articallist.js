@@ -5,12 +5,11 @@ var dbKey = require('../key.js')
 
 mongoose.connect(dbKey, {useNewUrlParser: true});
 
-var docSchema = new Schema({
+var artSchema = new Schema({
     title: {type: String, required: true},
     abstract: {type: String},
-    tag: {type: String, require: true},
-    page: {type: Number, require: true},
-    file: {type: String, require: true}
+    tagId: {type: String, require: true},
+    content: {type: String, require: true}
 })
 
-module.exports = mongoose.model('Document', docSchema)
+module.exports = mongoose.model('Articlelist', artSchema)
