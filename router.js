@@ -6,7 +6,6 @@ const router = express.Router()
 
 const Articlelist = require('./model/articallist')
 
-
 router.get('/api/articles', function (req, res) {
     var tagId = req.query.tagId
     var limit = req.query.pageSize||10; //分页参数
@@ -16,10 +15,10 @@ router.get('/api/articles', function (req, res) {
         if (err) {
             return backWebError(err, res)
         } else {
-            var totalLength = Articlelist.find()
+
             return res.json({
                 data: data,
-                more: data.length<4?false:true
+                more: data.length<limit?false:true
 
             })
         }
@@ -42,10 +41,67 @@ router.get('/api/article/detail', function (req, res) {
 var tag_list = require('./data/tags.js')
 
 router.get('/api/tags/all', function (req, res) {
-    return res.json({
-        data: tag_list
+    if (err) {
+        return backWebError(err, res)
+    }else {
+        return res.json({
+            data: tag_list
+        })
+    }
+
+})
+
+// 后台接口
+router.get('/api/allArticles',function (req,res) {
+    Articlelist.find({}, function (err, data) {
+        if (err) {
+            return backWebError(err, res)
+        } else {
+            return res.json({
+                data: data
+            })
+        }
     })
 })
+// 后台上传数据接口
+router.post('/api/article/upload',function (req,res) {
+    console.log(req.body)
+    var tagName = req.body.tag
+    var tagId
+
+   tag_list.some(item=>{
+        if(item.name === tagName){
+            tagId = item.id
+        }else {
+            tagId = 'tag'+ (tag_list.length+1)
+        }
+    })
+
+    tag_list.push({
+        id:tagId,
+        name:tagName
+    })
+
+    var article = {
+        title: req.body.title,
+        abstract: req.body.abstract,
+        tagId:tagId,
+        content: req.body.content
+    }
+    res.redirect('/')
+    new Articlelist(article).save(function (err) {
+        if(err){
+            return backWebError(err,res)
+        } else {
+            console.log('上传成功')
+            res.redirect('/')
+        }
+    })
+
+})
+
+
+
 
 function backWebError(err, res) {
     console.log(res + "..." + err)
