@@ -47,37 +47,6 @@ router.get('/api/tags/all', function (req, res) {
     })
 })
 
-router.post('/api/article/upload', function (req, res) {
-    Articlelist.find({}, function (err, data) {
-        if (err) {
-            return backWebError(err, res)
-        } else {
-            req.body.page = Math.ceil(data.length / 4)  //每页长度是4，设置每个上传的对象处在第几页
-            new Document(req.body).save(function (err) {
-                if (err) {
-                    console.log('保存失败')
-                } else {
-                    console.log('保存成功')
-                }
-            })
-            res.redirect('/')
-        }
-    })
-
-})
-
-router.get('/api/tag/classify', function (req, res) {
-    Articlelist.find(req.query, function (err, data) {
-        if (err) {
-            return backWebError(err, res)
-        } else {
-            return res.json({
-                data: data
-            })
-        }
-    })
-})
-
 function backWebError(err, res) {
     console.log(res + "..." + err)
     return res.json({
