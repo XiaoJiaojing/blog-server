@@ -106,6 +106,26 @@ router.post('/api/article/edit',function (req,res) {
 
 })
 
+// 后台删除数据接口
+router.get('/api/article/delete',function (req,res) {
+    console.log(req.query._id)
+    // Articlelist.remove({_id:req.query.id},function (err) {
+    //     if(err){
+    //         return backWebError(err,res)
+    //     } else {
+    //         console.log('删除成功')
+    //         res.redirect('/')
+    //     }
+    // })
+    Articlelist.findByIdAndRemove(req.query._id,function (err) {
+        if(err){
+            return backWebError(err,res)
+        } else {
+            console.log('删除成功')
+            res.redirect('/')
+        }
+    })
+})
 function backWebError(err, res) {
     console.log(res + "..." + err)
     return res.json({
