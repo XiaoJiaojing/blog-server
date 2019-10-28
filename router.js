@@ -16,11 +16,18 @@ router.get('/api/articles', function (req, res) {
             return backWebError(err, res)
         } else {
             Articlelist.find().count(function (err,count) {
+                if(data.length===0){
+                    return res.json({
+                        data: data,
+                        more:false
+                    })
+                } else {
+                    return res.json({
+                        data: data,
+                        more: currentPage < Math.ceil(count/limit) ?true:false
+                    })
+                }
 
-                return res.json({
-                    data: data,
-                    more: currentPage < Math.ceil(count/limit) ?true:false
-                })
             })
 
 
