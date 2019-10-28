@@ -1,12 +1,11 @@
 const express = require('express')
-
 const path = require('path')
-
 const fs = require('fs')
 
 var bodyParser = require('body-parser')
 
-const router = require('./router')
+const articleRoute = require('./route/article.js')
+const tagRoute = require('./route/tag.js')
 
 const app = express()
 
@@ -30,7 +29,8 @@ app.use(bodyParser.json())
 
 app.use(express.static(path.resolve(__dirname, 'dist')))
 
-app.use(router)
+app.use(articleRoute)
+app.use(tagRoute)
 
 app.listen(3000, function () {
     console.log('服务器开启了...')

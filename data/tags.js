@@ -9,7 +9,7 @@ var tag_list = [
     },
     {
         id: "tag3",
-        name: "javascript"
+        name: "Javascript"
     },
     {
         id: "tag4",
