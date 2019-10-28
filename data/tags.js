@@ -14,6 +14,14 @@ var tag_list = [
     {
         id: "tag4",
         name: "webpack"
+    },
+    {
+        id: 'tag5',
+        name: "node"
+    },
+    {
+        id: 'tag6',
+        name: '其他'
     }
 ]
 

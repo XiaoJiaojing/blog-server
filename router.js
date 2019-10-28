@@ -15,12 +15,15 @@ router.get('/api/articles', function (req, res) {
         if (err) {
             return backWebError(err, res)
         } else {
+            Articlelist.find().count(function (err,count) {
 
-            return res.json({
-                data: data,
-                more: data.length<limit?false:true
-
+                return res.json({
+                    data: data,
+                    more: currentPage < Math.ceil(count/limit) ?true:false
+                })
             })
+
+
         }
     })
 
@@ -61,6 +64,7 @@ router.get('/api/allArticles',function (req,res) {
         }
     })
 })
+
 // 后台上传数据接口
 router.post('/api/article/upload',function (req,res) {
     console.log(req.body)
@@ -108,15 +112,6 @@ router.post('/api/article/edit',function (req,res) {
 
 // 后台删除数据接口
 router.get('/api/article/delete',function (req,res) {
-    console.log(req.query._id)
-    // Articlelist.remove({_id:req.query.id},function (err) {
-    //     if(err){
-    //         return backWebError(err,res)
-    //     } else {
-    //         console.log('删除成功')
-    //         res.redirect('/')
-    //     }
-    // })
     Articlelist.findByIdAndRemove(req.query._id,function (err) {
         if(err){
             return backWebError(err,res)
@@ -126,6 +121,7 @@ router.get('/api/article/delete',function (req,res) {
         }
     })
 })
+
 function backWebError(err, res) {
     console.log(res + "..." + err)
     return res.json({
