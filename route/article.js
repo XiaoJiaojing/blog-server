@@ -44,6 +44,8 @@ router.get('/api/article/detail', function (req, res) {
     })
 })
 
+
+
 // 后台获取全部数据接口
 router.get('/api/allArticles', function (req, res) {
     Articlelist.find({}, function (err, data) {

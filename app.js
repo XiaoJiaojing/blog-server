@@ -17,7 +17,6 @@ app.use(bodyParser.json())
 
 
 app.use(express.static(path.resolve(__dirname, 'dist')))
-app.use(express.static(path.resolve(__dirname, 'background')))
 
 
 app.use(articleRoute)
