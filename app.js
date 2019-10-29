@@ -22,6 +22,6 @@ app.use(express.static(path.resolve(__dirname, 'dist')))
 app.use(articleRoute)
 app.use(tagRoute)
 
-app.listen(3000, function () {
+app.listen(80, function () {
     console.log('服务器开启了...')
 })
