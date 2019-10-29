@@ -14,7 +14,7 @@ router.get('/api/articles', function (req, res) {
         if (err) {
             return backWebError(err, res)
         } else {
-            Articlelist.find().count(function (err, count) {
+            Articlelist.find().estimatedDocumentCount(function (err, count) {
                 if (data.length === 0) {
                     return res.json({
                         data: data,

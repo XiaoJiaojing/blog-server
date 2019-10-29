@@ -1927,7 +1927,7 @@ var result = [
             '\n' +
             '2.在项目根目录创建 `views` 和 `src `两个目录\n' +
             '\n' +
-            '3.在`src`目录下新建 首页页面  `index.html`\n' +
+            '3.在`src`目录下新建 首页页面  `backgroundAdmin.html`\n' +
             '\n' +
             '4.使用 cnpm 安装webpack,运行 `cnpm i webpack -D`\n' +
             '\n' +
@@ -1974,7 +1974,7 @@ var result = [
             '\n' +
             '10.一旦使用`webpack-dev-server`打包，生成的文件时存放在内存中的，不是在物理磁盘上，但是，我们可以假装认为在根目录中有一个打包的文件，打包文件会存储在根目录下，因此引入的时候，要注意路径的书写\n' +
             '\n' +
-            '11.如果想要打包好后，直接打开`index.html`文件，需要在`package.json`文件的`scripts`中的`"dev" ：“webpack-dev-server"中加一项：\n' +
+            '11.如果想要打包好后，直接打开`backgroundAdmin.html`文件，需要在`package.json`文件的`scripts`中的`"dev" ：“webpack-dev-server"中加一项：\n' +
             '\n' +
             '```javascript\n' +
             'scripts: {\n' +
@@ -2000,8 +2000,8 @@ var result = [
             '  const HtmlWebpackPlugin = require(\'html-webpack-plugin\')  导入在内存中自动生成 index.html的插件\n' +
             '3.创建一个插件的实例对象\n' +
             'const htmlPlugin = new HtmlWebpackPlugin({\n' +
-            '    template: path.join(__dirname,\'./src/index.html\')  ,//源文件\n' +
-            '    filename:  \'index.html\'//生成的内存中首页的名称\n' +
+            '    template: path.join(__dirname,\'./src/backgroundAdmin.html\')  ,//源文件\n' +
+            '    filename:  \'backgroundAdmin.html\'//生成的内存中首页的名称\n' +
             '})\n' +
             '4.插件设置完毕后，添加到导出的对象中(指定的环境是生产环境时，可能会出现limit错误)\n' +
             'module.exports = {\n' +
