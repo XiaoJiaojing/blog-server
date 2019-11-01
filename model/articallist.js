@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 var dbKey = require('../key.js')
 
+
 mongoose.connect(dbKey, {useNewUrlParser: true});
 
 var artSchema = new Schema({

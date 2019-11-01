@@ -20,11 +20,19 @@ router.get('/api/articles', function (req, res) {
                         data: data,
                         more: false
                     })
-                } else {
-                    return res.json({
-                        data: parseTag(data),
-                        more: currentPage < Math.ceil(count / limit) ? true : false
-                    })
+                } else{
+                    if(tagId){
+                        return res.json({
+                            data: parseTag(data),
+                            more: currentPage < Math.ceil(data.length / limit) ? true : false
+                        })
+                    }else {
+                        return res.json({
+                            data: parseTag(data),
+                            more: currentPage < Math.ceil(count / limit) ? true : false
+                        })
+                    }
+
                 }
 
             })
@@ -45,7 +53,6 @@ router.get('/api/article/detail', function (req, res) {
 })
 
 
-
 // 后台获取全部数据接口
 router.get('/api/allArticles', function (req, res) {
     Articlelist.find({}, function (err, data) {
@@ -61,7 +68,6 @@ router.get('/api/allArticles', function (req, res) {
 
 // 后台上传数据接口
 router.post('/api/article/upload', function (req, res) {
-    console.log(req.body)
     var tempTagId = parseDataToTagId(req.body.tag)
     console.log(tempTagId)
     var article = {
