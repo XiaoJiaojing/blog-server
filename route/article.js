@@ -99,7 +99,6 @@ router.post('/api/article/edit', function (req, res) {
         if (err) {
             return backWebError(err, res)
         } else {
-            console.log('编辑成功')
             res.redirect('/')
         }
     })
