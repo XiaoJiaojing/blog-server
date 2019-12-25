@@ -3,7 +3,7 @@ const express = require('express')
 const router = express.Router()
 
 const Articlelist = require('../model/articallist')
-var tag_list = require('../data/tags.js')
+const tag_list = require('../data/tags.js')
 
 router.get('/api/articles', function (req, res) {
     var tagId = req.query.tagId
