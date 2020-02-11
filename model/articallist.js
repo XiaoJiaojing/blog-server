@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 var dbKey = require('../key.js')
 
 
-mongoose.connect(dbKey, {useNewUrlParser: true});
+mongoose.connect(dbKey, { useUnifiedTopology: true});
 
 var artSchema = new Schema({
     title: {type: String, required: true},
